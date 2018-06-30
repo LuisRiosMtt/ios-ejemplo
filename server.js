@@ -3,11 +3,11 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyparser = require('body-parser');
-var port = process.env.port || 8080;
+var port = process.env.port || 1337;
 var urlLocal = 'mongodb://localhost/bd_ventas2';
 
 //conectando a la BD MongoDB
-mongoose.connect(process.env.CUSTOMCONNSTR_MyConnectionString || urlLocal ,function(err){
+mongoose.connect(process.env.CUSTOMCONNSTR_MyConnectionStringX || urlLocal ,function(err){
     if(err){
         console.log('Error con en el servidor');
     }
