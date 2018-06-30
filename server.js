@@ -3,18 +3,18 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyparser = require('body-parser');
-var port = process.env.port || 1337;
+var port = process.env.port || 8080;
 var urlLocal = 'mongodb://localhost/bd_ventas2';
 
 //conectando a la BD MongoDB
-mongoose.connect(process.env.CUSTOMCONNSTR_MyConnectionStringX || urlLocal ,function(err){
-    if(err){
-        console.log('Error con en el servidor');
+mongoose.connect('mongodb://ejemplo-bd.documents.azure.com:10255/admin?ssl=true', {
+    auth: {
+      user: 'ejemplo-bd',
+      password: 'X1SpFftqDnYhA88NDzWOG19eC9I5l4Gydck3cFqraBG3SnGoAKKQaDmt1Dd8HAsmgj178VVxaa27laSTsNK1tg=='
     }
-    else{
-        console.log('Conexion exitosa');
-    }
-});
+  })
+  .then(() => console.log('connection successful'))
+  .catch((err) => console.error(err));
 
 //creando el esquema y el modelo
 var esquemaUsuario = mongoose.Schema({
